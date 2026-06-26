@@ -1,5 +1,4 @@
 packages:
-  - '.'
+  - "."
 allowBuilds:
-  - esbuild
-  - vue-demi
+  esbuild: false
