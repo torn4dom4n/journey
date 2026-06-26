@@ -1,0 +1,32 @@
+- label: Visited
+  color: "#10b981"
+  places:
+    - label: Hà Giang
+      coords: 22.8168007, 104.9504515
+
+    - label: Sa Pa
+      coords: 22.3153883, 103.8399788
+
+    - label: Hồ Núi Cốc, Thái Nguyên
+      coords: 21.5774672, 105.7038800
+
+    - label: Cô Tô
+      coords: 21.2394673, 107.9641268
+
+    - label: Hạ Long
+      coords: 20.9488856, 107.1035074
+
+    - label: Cát Bà, Hải Phòng
+      coords: 20.7239613, 107.0497823
+
+- label: Stay
+  color: "#8b5cf6"
+  places: []
+
+- label: Residence
+  color: "#f59e0b"
+  places: []
+
+- label: Wishlist
+  color: "#f43f5e"
+  places: []

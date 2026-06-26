@@ -1,0 +1,15 @@
+html,
+body,
+#root {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 14px !important;
+}
