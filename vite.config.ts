@@ -1,21 +1,12 @@
-import Vue from "@vitejs/plugin-vue";
-import UnoCSS from "unocss/vite";
-import Yaml from "unplugin-yaml/vite";
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import UnoCSS from 'unocss/vite'
+import Yaml from 'unplugin-yaml/vite'
 
 export default defineConfig({
-  plugins: [Vue(), UnoCSS(), Yaml()],
-  build: {
-    minify: false,
-    rolldownOptions: {
-      output: {
-        codeSplitting: {
-          groups: [
-            { name: "mapbox", test: /mapbox/ },
-            { name: "vendor", test: /node_modules/ },
-          ],
-        },
-      },
-    },
-  },
-});
+  plugins: [
+    vue(),
+    UnoCSS(),
+    Yaml(),
+  ],
+})

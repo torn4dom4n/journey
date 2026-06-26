@@ -1,4 +1,4 @@
-<script setup lang="ts" vapor>
+<script setup lang="ts">
 import MapboxLanguage from "@mapbox/mapbox-gl-language";
 import { useDark } from "@vueuse/core";
 import mapboxgl, { Map, type ProjectionSpecification } from "mapbox-gl";
@@ -32,13 +32,18 @@ const loaded = ref(false);
 provide("map", map);
 
 onMounted(() => {
-  mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+  const token = import.meta.env.VITE_MAPBOX_TOKEN;
+  if (!token) {
+    console.warn("VITE_MAPBOX_TOKEN is missing. Map might not render correctly.");
+  }
+  mapboxgl.accessToken = token || "";
 
+  console.log("Initializing Mapbox...");
   const instance = new Map({
     container: container.value!,
     style: style.value,
-    center: [100, 30],
-    zoom: 2,
+    center: [105, 21], // Center on Vietnam
+    zoom: 5,
     projection: props.projection,
     dragRotate: true,
     touchPitch: true,
@@ -47,16 +52,17 @@ onMounted(() => {
 
   instance.addControl(
     new MapboxLanguage({
-      defaultLanguage: {
-        "zh-cn": "zh-Hans",
-        "zh-hk": "zh-Hant",
-        "zh-tw": "zh-Hant",
-      }[navigator.language.toLowerCase()],
+      defaultLanguage: "en",
     }) as any,
   );
 
   instance.on("load", () => {
+    console.log("Map loaded.");
     loaded.value = true;
+  });
+
+  instance.on("error", (e) => {
+    console.error("Mapbox error:", e);
   });
 
   instance.on("style.load", () => {
@@ -91,6 +97,6 @@ watch(
 </script>
 
 <template>
-  <div ref="container" style="width: 100vw; height: 100vh" />
+  <div ref="container" class="h-full w-full" style="position: absolute; top: 0; left: 0" />
   <slot v-if="map" />
 </template>
