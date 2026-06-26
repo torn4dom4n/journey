@@ -1,7 +1,8 @@
 {
   "name": "nhatnguyen-journey",
   "framework": "vite",
-  "buildCommand": "vite build",
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
   "outputDirectory": "dist",
   "github": {
     "autoJobCancelation": true
