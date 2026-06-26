@@ -31,5 +31,11 @@
     "unplugin-yaml": "^4.2.1",
     "vite": "^6.1.1",
     "vue-tsc": "^2.2.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "vue-demi"
+    ]
   }
 }
