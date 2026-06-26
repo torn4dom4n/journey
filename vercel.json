@@ -1,5 +1,5 @@
 {
-  "name": "@area44/vite-workspace",
+  "name": "nhatnguyen-journey",
   "framework": "vite",
   "buildCommand": "vite build",
   "outputDirectory": "dist",

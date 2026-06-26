@@ -14,23 +14,22 @@
   },
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^1.0.1",
-    "@unocss/reset": "^66.7.3",
-    "@vueuse/core": "^14.3.0",
+    "@unocss/reset": "66.7.2",
+    "@vueuse/core": "14.3.0",
     "mapbox-gl": "^3.25.0",
-    "vue": "^3.6.0-beta.17"
+    "vue": "3.6.0-beta.17"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",
     "@iconify-json/ri": "^1.2.10",
     "@types/node": "^25.9.4",
-    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue": "6.0.7",
     "oxfmt": "^0.55.0",
     "oxlint": "^1.70.0",
-    "playwright": "^1.61.1",
     "typescript": "^6.0.3",
-    "unocss": "^66.7.3",
+    "unocss": "66.7.2",
     "unplugin-yaml": "^4.2.1",
-    "vite": "^8.0.16",
-    "vue-tsc": "^3.3.5"
+    "vite": "8.0.16",
+    "vue-tsc": "3.3.5"
   }
 }
