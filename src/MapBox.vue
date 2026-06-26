@@ -2,7 +2,16 @@
 import MapboxLanguage from "@mapbox/mapbox-gl-language";
 import { useDark } from "@vueuse/core";
 import mapboxgl, { Map } from "mapbox-gl";
-import { computed, onMounted, onUnmounted, provide, shallowRef, useTemplateRef, watch } from "vue";
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  provide,
+  ref,
+  shallowRef,
+  useTemplateRef,
+  watch,
+} from "vue";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const props = defineProps<{
@@ -14,7 +23,7 @@ const emit = defineEmits<{
 }>();
 
 const dark = useDark();
-const style = computed(() => `mapbox://styles/mapbox/${dark.value ? "dark" : "light"}-v10`);
+const style = computed(() => `mapbox://styles/mapbox/${dark.value ? "dark" : "light"}-v11`);
 
 const container = useTemplateRef<HTMLDivElement>("container");
 const map = shallowRef<Map>();
@@ -33,8 +42,8 @@ onMounted(() => {
     container: container.value!,
     style: style.value,
     center: [105.8, 21.0],
-    zoom: 2,
-    projection: props.projection as any,
+    zoom: 1.5,
+    projection: { name: props.projection },
     dragRotate: true,
     touchPitch: true,
     attributionControl: false,
@@ -48,7 +57,7 @@ onMounted(() => {
 
   instance.on("load", () => {
     loaded.value = true;
-    instance.setProjection(props.projection as any);
+    instance.setProjection({ name: props.projection });
   });
 
   instance.on("style.load", () => {
@@ -77,7 +86,7 @@ watch(
   () => props.projection,
   (projection) => {
     if (!loaded.value) return;
-    map.value?.setProjection(projection as any);
+    map.value?.setProjection({ name: projection });
   },
 );
 </script>
