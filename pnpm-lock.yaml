@@ -7,19 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@unocss/reset':
-        specifier: 66.7.3
-        version: 66.7.3
-      '@vueuse/core':
-        specifier: ^14.3.0
-        version: 14.3.0(vue@3.5.39(typescript@6.0.3))
-      maplibre-gl:
-        specifier: ^5.24.0
-        version: 5.24.0
-      vue:
-        specifier: ^3.5.39
-        version: 3.5.39(typescript@6.0.3)
     devDependencies:
       '@iconify-json/ph':
         specifier: ^1.2.2
@@ -30,9 +17,18 @@ importers:
       '@types/node':
         specifier: ^24.13.2
         version: 24.13.2
+      '@unocss/reset':
+        specifier: ^66.7.3
+        version: 66.7.3
       '@vitejs/plugin-vue':
         specifier: ^6.0.7
         version: 6.0.7(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.8.4))(vue@3.5.39(typescript@6.0.3))
+      '@vueuse/core':
+        specifier: ^14.3.0
+        version: 14.3.0(vue@3.5.39(typescript@6.0.3))
+      maplibre-gl:
+        specifier: ^5.24.0
+        version: 5.24.0
       oxfmt:
         specifier: ^0.56.0
         version: 0.56.0
@@ -43,7 +39,7 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
       unocss:
-        specifier: 66.7.3
+        specifier: ^66.7.3
         version: 66.7.3(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.8.4))
       unplugin-yaml:
         specifier: ^4.2.1
@@ -51,8 +47,11 @@ importers:
       vite:
         specifier: ^8.1.0
         version: 8.1.0(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.8.4)
+      vue:
+        specifier: ^3.5.39
+        version: 3.5.39(typescript@6.0.3)
       vue-tsc:
-        specifier: 3.3.5
+        specifier: ^3.3.5
         version: 3.3.5(typescript@6.0.3)
 
 packages:
