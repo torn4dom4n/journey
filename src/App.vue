@@ -45,7 +45,7 @@ async function handleLocate() {
 </script>
 
 <template>
-  <div class="relative h-screen w-screen overflow-hidden">
+  <div class="relative h-dvh w-screen overflow-hidden">
     <MapBox :projection="projection" @map-ready="(m) => (map = m)">
       <template v-for="item in data" :key="item.label">
         <PlaceMarker
@@ -67,44 +67,51 @@ async function handleLocate() {
       />
     </MapBox>
 
-    <div class="bottom-6 left-6 sm:flex pointer-events-none absolute hidden flex-col items-start">
+    <div
+      class="bottom-4 left-4 sm:bottom-6 sm:left-6 pointer-events-none absolute flex flex-col items-start"
+    >
       <div
         class="bg-white/80 px-4 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md gap-2 rounded-2xl pointer-events-auto flex flex-col"
       >
         <div v-for="item in data" :key="item.label" class="gap-2 flex items-center">
           <div class="h-2.5 w-2.5 rounded-full" :style="{ backgroundColor: item.color }" />
-          <span class="font-medium">{{ item.label }}</span>
+          <span class="font-medium text-xs sm:text-sm">{{ item.label }}</span>
         </div>
       </div>
     </div>
 
-    <div class="bottom-6 right-6 gap-3 pointer-events-none absolute flex flex-col items-end">
-      <div class="gap-3 pointer-events-auto flex">
+    <div
+      class="bottom-4 right-4 sm:bottom-6 sm:right-6 gap-2 sm:gap-3 pointer-events-none absolute flex flex-col items-end"
+    >
+      <div class="gap-2 sm:gap-3 pointer-events-auto flex">
         <div
-          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md sm:flex hidden items-center rounded-full"
+          class="gap-2 sm:gap-3 bg-white/80 px-2.5 py-1.5 sm:px-3 sm:py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
         >
           <button
             class="flex cursor-pointer"
             :class="{ 'opacity-30': projection !== 'globe' }"
             @click="projection = 'globe'"
           >
-            <span class="i-ph:globe-hemisphere-east-duotone text-xl" aria-label="Earth" />
+            <span
+              class="i-ph:globe-hemisphere-east-duotone text-lg sm:text-xl"
+              aria-label="Earth"
+            />
           </button>
           <button
             class="flex cursor-pointer"
             :class="{ 'opacity-30': projection !== 'mercator' }"
             @click="projection = 'mercator'"
           >
-            <span class="i-ph:map-trifold-duotone text-xl" aria-label="Map" />
+            <span class="i-ph:map-trifold-duotone text-lg sm:text-xl" aria-label="Map" />
           </button>
         </div>
 
         <div
-          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
+          class="gap-3 bg-white/80 px-2.5 py-1.5 sm:px-3 sm:py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
         >
           <button class="flex cursor-pointer" @click="handleLocate">
             <span
-              class="i-ph:map-pin-duotone text-xl"
+              class="i-ph:map-pin-duotone text-lg sm:text-xl"
               :class="{ 'animate-pulse': locating }"
               aria-label="Locate me"
             />
