@@ -18,15 +18,3 @@
 
     - label: Cát Bà, Hải Phòng
       coords: 20.7239613, 107.0497823
-
-- label: Stay
-  color: "#8b5cf6"
-  places: []
-
-- label: Residence
-  color: "#f59e0b"
-  places: []
-
-- label: Wishlist
-  color: "#f43f5e"
-  places: []
