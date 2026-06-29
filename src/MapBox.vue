@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import MapboxLanguage from "@mapbox/mapbox-gl-language";
 import { useDark } from "@vueuse/core";
-import mapboxgl, { Map } from "mapbox-gl";
+import { Map } from "maplibre-gl";
 import {
   computed,
   onMounted,
@@ -12,7 +11,7 @@ import {
   useTemplateRef,
   watch,
 } from "vue";
-import "mapbox-gl/dist/mapbox-gl.css";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const props = defineProps<{
   projection: "globe" | "mercator";
@@ -23,7 +22,9 @@ const emit = defineEmits<{
 }>();
 
 const dark = useDark();
-const style = computed(() => `mapbox://styles/mapbox/${dark.value ? "dark" : "light"}-v11`);
+const style = computed(
+  () => `https://tiles.openfreemap.org/styles/${dark.value ? "dark" : "liberty"}`,
+);
 
 const container = useTemplateRef<HTMLDivElement>("container");
 const map = shallowRef<Map>();
@@ -32,41 +33,22 @@ const loaded = ref(false);
 provide("map", map);
 
 onMounted(() => {
-  const token = import.meta.env.VITE_MAPBOX_TOKEN;
-  if (!token) {
-    console.error("VITE_MAPBOX_TOKEN is missing!");
-  }
-  mapboxgl.accessToken = token || "";
-
   const instance = new Map({
     container: container.value!,
     style: style.value,
     center: [105.8, 21.0],
     zoom: 1.5,
-    projection: { name: props.projection },
+    // @ts-ignore
+    projection: { type: props.projection },
     dragRotate: true,
     touchPitch: true,
     attributionControl: false,
   });
 
-  instance.addControl(
-    new MapboxLanguage({
-      defaultLanguage: "en",
-    }) as any,
-  );
-
   instance.on("load", () => {
     loaded.value = true;
-    instance.setProjection({ name: props.projection });
-  });
-
-  instance.on("style.load", () => {
-    instance.setFog({
-      color: "rgba(0,0,0,0)",
-      "high-color": "rgba(255,255,255,0.1)",
-      "space-color": "rgba(0,0,0,0)",
-      "horizon-blend": 0,
-    });
+    // @ts-ignore
+    instance.setProjection({ type: props.projection });
   });
 
   map.value = instance;
@@ -86,7 +68,8 @@ watch(
   () => props.projection,
   (projection) => {
     if (!loaded.value) return;
-    map.value?.setProjection({ name: projection });
+    // @ts-ignore
+    map.value?.setProjection({ type: projection });
   },
 );
 </script>
@@ -97,7 +80,7 @@ watch(
 </template>
 
 <style scoped>
-:deep(.mapboxgl-canvas) {
+:deep(.maplibregl-canvas) {
   width: 100% !important;
   height: 100% !important;
 }
