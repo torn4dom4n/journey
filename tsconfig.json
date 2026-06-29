@@ -1,31 +1,24 @@
 {
   "compilerOptions": {
-    /* Language & Environment */
-    "target": "esnext",
-    "lib": ["esnext", "dom"],
-    /* React JSX Settings */
-    "jsx": "react-jsx",
-    /* Bundler Mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-    /* React Type Performance */
-    "jsxImportSource": "react",
-    /* Strictness & Linting */
-    "skipLibCheck": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true,
+    "esModuleInterop": true,
+    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "erasableSyntaxOnly": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "types": ["vite/client", "node"],
     "paths": {
       "@/*": ["./src/*"]
-    },
-    /* Type Declarations */
-    "types": ["node", "react", "react-dom", "vite/client"]
+    }
   },
-  "include": ["src"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

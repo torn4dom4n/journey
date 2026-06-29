@@ -24,7 +24,7 @@
     ],
   },
   "sortTailwindcss": {
-    "stylesheet": "./src/index.css",
+    "stylesheet": "./src/styles.css",
     "attributes": ["class", "className"],
     "functions": ["clsx", "cn", "cva", "tv"],
   },

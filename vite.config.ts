@@ -1,14 +1,8 @@
-import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
+import vue from "@vitejs/plugin-vue";
+import UnoCSS from "unocss/vite";
+import Yaml from "unplugin-yaml/vite";
 import { defineConfig } from "vite";
 
-const base = process.env.BASE || "/";
-
-// https://vite.dev/config/
 export default defineConfig({
-  base,
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    tsconfigPaths: true,
-  },
+  plugins: [vue(), UnoCSS(), Yaml()],
 });
