@@ -74,7 +74,7 @@ async function handleLocate() {
     <div class="bottom-6 right-6 gap-3 pointer-events-none absolute flex flex-col items-end">
       <div class="gap-3 pointer-events-auto flex">
         <div
-          class="gap-3 bg-white/20 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md dark-text-#f9fafb flex items-center rounded-full"
+          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
         >
           <button
             class="flex cursor-pointer"
@@ -93,7 +93,7 @@ async function handleLocate() {
         </div>
 
         <div
-          class="gap-3 bg-white/20 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md dark-text-#f9fafb flex items-center rounded-full"
+          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
         >
           <button class="flex cursor-pointer" @click="handleLocate">
             <span
@@ -106,7 +106,7 @@ async function handleLocate() {
       </div>
 
       <div
-        class="gap-3 bg-white/20 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md dark-text-#f9fafb pointer-events-auto flex max-w-[calc(100vw-3rem)] items-center overflow-x-auto rounded-full"
+        class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md pointer-events-auto flex max-w-[calc(100vw-3rem)] items-center overflow-x-auto rounded-full"
       >
         <LegendItem
           v-for="item in data"
