@@ -1,4 +1,4 @@
-# Nhat Nguyen's journey
+# @torn4dom4n/journey
 
 Nhat Nguyen's personal journey tracker.
 

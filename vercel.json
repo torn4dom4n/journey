@@ -1,5 +1,5 @@
 {
-  "name": "nhatnguyen-journey",
+  "name": "@torn4dom4n/journey",
   "framework": "vite",
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install",
