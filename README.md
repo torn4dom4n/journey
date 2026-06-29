@@ -11,4 +11,4 @@ pnpm dev
 
 ## License
 
-Licensed under the [MIT](LICENSE).
+Licensed under the [MIT License](LICENSE).
