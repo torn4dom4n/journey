@@ -1,0 +1,8 @@
+Legend: production dependency, optional only, dev only
+
+nhatnguyen-journey@0.1.0 /app (PRIVATE)
+│
+│   dependencies:
+└── mapbox-gl@3.25.0
+
+1 package
