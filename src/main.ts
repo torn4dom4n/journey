@@ -1,8 +1,11 @@
 import "@unocss/reset/tailwind.css";
-import { ViteSSG } from "vite-ssg";
+import { createApp } from "vue";
 
 import App from "./App.vue";
 import "./styles.css";
 import "virtual:uno.css";
 
-export const createApp = ViteSSG(App, { routes: [{ path: "/", component: App }] });
+console.log("Mounting app...");
+const app = createApp(App);
+app.mount("#root");
+console.log("App mounted.");
