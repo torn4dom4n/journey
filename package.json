@@ -29,7 +29,7 @@
     "unocss": "66.7.3",
     "unplugin-yaml": "^4.2.1",
     "vite": "^8.1.0",
-    "vue-tsc": "^2.2.12"
+    "vue-tsc": "^3.3.5"
   },
   "packageManager": "pnpm@11.9.0"
 }
