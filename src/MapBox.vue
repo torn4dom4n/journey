@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { Map } from "maplibre-gl";
-
+import { Map } from "maplibre-gl";
 import { onMounted, onUnmounted, provide, ref, shallowRef, useTemplateRef, watch } from "vue";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -20,8 +19,7 @@ const loaded = ref(false);
 
 provide("map", map);
 
-onMounted(async () => {
-  const { Map } = await import("maplibre-gl");
+onMounted(() => {
   const instance = new Map({
     container: container.value!,
     style: style,
