@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import type { Map } from "maplibre-gl";
 
-import { useDark, useLocalStorage, useToggle } from "@vueuse/core";
+import { useLocalStorage } from "@vueuse/core";
 import { computed, reactive, ref } from "vue";
 
 import data from "../data.yaml";
 import LegendItem from "./LegendItem.vue";
 import MapBox from "./MapBox.vue";
 import PlaceMarker from "./PlaceMarker.vue";
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
 
 const activeLegends = reactive(new Set(["Visited", "Stay", "Residence"]));
 const projection = useLocalStorage<"globe" | "mercator">("map-projection", "globe");
@@ -77,7 +74,7 @@ async function handleLocate() {
     <div class="bottom-6 right-6 gap-3 pointer-events-none absolute flex flex-col items-end">
       <div class="gap-3 pointer-events-auto flex">
         <div
-          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md dark:bg-white/20 dark-text-#f9fafb flex items-center rounded-full"
+          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
         >
           <button
             class="flex cursor-pointer"
@@ -96,15 +93,8 @@ async function handleLocate() {
         </div>
 
         <div
-          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md dark:bg-white/20 dark-text-#f9fafb flex items-center rounded-full"
+          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
         >
-          <button class="flex cursor-pointer" @click="toggleDark()">
-            <span
-              class="text-xl"
-              :class="isDark ? 'i-ph:moon-stars-duotone' : 'i-ph:sun-dim-duotone'"
-              aria-label="Toggle dark mode"
-            />
-          </button>
           <button class="flex cursor-pointer" @click="handleLocate">
             <span
               class="i-ph:map-pin-duotone text-xl"
@@ -116,7 +106,7 @@ async function handleLocate() {
       </div>
 
       <div
-        class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md dark:bg-white/20 dark-text-#f9fafb pointer-events-auto flex max-w-[calc(100vw-3rem)] items-center overflow-x-auto rounded-full"
+        class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md pointer-events-auto flex max-w-[calc(100vw-3rem)] items-center overflow-x-auto rounded-full"
       >
         <LegendItem
           v-for="item in data"

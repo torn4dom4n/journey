@@ -17,7 +17,7 @@ const emit = defineEmits<{
     @click="emit('toggle', !active)"
   >
     <span
-      class="h-2.5 w-2.5 border-white rounded-full border-2 shadow-[0_0_0_2px_#11182714] dark:shadow-[0_0_0_2px_#ffffff30]"
+      class="h-2.5 w-2.5 border-white rounded-full border-2 shadow-[0_0_0_2px_#11182714]"
       :style="{ background: color }"
       aria-hidden="true"
     />

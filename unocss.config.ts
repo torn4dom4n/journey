@@ -2,9 +2,7 @@ import { defineConfig, presetIcons, presetWind3, transformerDirectives } from "u
 
 export default defineConfig({
   presets: [
-    presetWind3({
-      dark: "class",
-    }),
+    presetWind3({}),
     presetIcons({
       scale: 1.2,
     }),
