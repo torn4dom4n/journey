@@ -29,5 +29,5 @@
     /* Type Declarations */
     "types": ["node", "vite/client"]
   },
-  "include": ["src", "vite.config.ts", "unocss.config.ts", "golar.config.ts"]
+  "include": ["src", "vite.config.ts", "unocss.config.ts"]
 }
