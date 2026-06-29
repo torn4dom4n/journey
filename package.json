@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "lint": "oxlint",
     "fmt": "oxfmt",
-    "check": "oxlint && oxfmt",
-    "typecheck": "vue-tsc --noEmit"
+    "check": "oxlint && oxfmt"
   },
   "dependencies": {
     "@unocss/reset": "66.7.3",
@@ -25,11 +24,10 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "oxfmt": "^0.56.0",
     "oxlint": "^1.71.0",
-    "typescript": "^6.0.3",
+    "typescript": "^5.7.0",
     "unocss": "66.7.3",
     "unplugin-yaml": "^4.2.1",
-    "vite": "^8.1.0",
-    "vue-tsc": "^3.3.5"
+    "vite": "^6.0.0"
   },
   "packageManager": "pnpm@11.9.0"
 }
