@@ -67,7 +67,7 @@ async function handleLocate() {
       />
     </MapBox>
 
-    <div class="bottom-6 left-6 pointer-events-none absolute flex flex-col items-start">
+    <div class="bottom-6 left-6 sm:flex pointer-events-none absolute hidden flex-col items-start">
       <div
         class="bg-white/80 px-4 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md gap-2 rounded-2xl pointer-events-auto flex flex-col"
       >
@@ -81,7 +81,7 @@ async function handleLocate() {
     <div class="bottom-6 right-6 gap-3 pointer-events-none absolute flex flex-col items-end">
       <div class="gap-3 pointer-events-auto flex">
         <div
-          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md flex items-center rounded-full"
+          class="gap-3 bg-white/80 px-3 py-2 text-sm text-#111827 shadow-lg backdrop-blur-md sm:flex hidden items-center rounded-full"
         >
           <button
             class="flex cursor-pointer"
