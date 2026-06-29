@@ -4,5 +4,6 @@ import Yaml from "unplugin-yaml/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "./",
   plugins: [vue(), UnoCSS(), Yaml()],
 });

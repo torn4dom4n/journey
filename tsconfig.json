@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    /* Language & Environment */
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "jsx": "preserve",
+
+    /* Bundler Mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Strictness & Linting */
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "erasableSyntaxOnly": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* Type Declarations */
+    "types": ["node", "vite/client"]
+  },
+  "include": ["src", "vite.config.ts", "unocss.config.ts"]
+}
