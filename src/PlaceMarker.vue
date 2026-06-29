@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Marker, Popup, type Map } from "mapbox-gl";
+import { Marker, Popup, type Map } from "maplibre-gl";
 import { computed, inject, onUnmounted, watchEffect, type Ref } from "vue";
 
 import type { Place } from "./types";

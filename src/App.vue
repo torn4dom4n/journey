@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Map } from "mapbox-gl";
+import type { Map } from "maplibre-gl";
 
 import { useLocalStorage } from "@vueuse/core";
 import { computed, reactive, ref } from "vue";
@@ -10,7 +10,7 @@ import MapBox from "./MapBox.vue";
 import PlaceMarker from "./PlaceMarker.vue";
 
 const activeLegends = reactive(new Set(["Visited", "Stay", "Residence"]));
-const projection = useLocalStorage<"globe" | "mercator">("mapbox-projection", "globe");
+const projection = useLocalStorage<"globe" | "mercator">("map-projection", "globe");
 
 const filteredData = computed(() => data.filter((item: any) => activeLegends.has(item.label)));
 
