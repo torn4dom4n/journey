@@ -1,23 +1,26 @@
 - label: Visited
   color: "#10b981"
   places:
+    - label: Bắc Ninh
+      coords: 21.1861, 106.0763
+    
     - label: Hà Giang
       coords: 22.8168007, 104.9504515
 
     - label: Lào Cai
-      coords: 22.4833, 103.9667
+      coords: 22.3153883, 103.8399788
 
     - label: Thái Nguyên
-      coords: 21.5940, 105.8481
+      coords: 21.5774672, 105.7038800
 
     - label: Hải Phòng
       coords: 20.8449, 106.6881
 
     - label: Quảng Ninh
-      coords: 21.0063, 107.2912
+      coords: 20.9488856, 107.1035074
 
-    - label: Bắc Ninh
-      coords: 21.1861, 106.0763
+    - label: Bắc Giang
+      coords: 21.2816, 106.1989
 
     - label: Phú Thọ
       coords: 21.3228, 105.4019
