@@ -54,9 +54,7 @@ export default defineConfig({
       typeCheck: true,
     },
   },
-  plugins: [
-    vue(), UnoCSS(), Yaml(),
-  ],
+  plugins: [vue(), UnoCSS(), Yaml()],
   resolve: {
     tsconfigPaths: true,
   },
