@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "ignoreDeprecations": "7.0",
     /* Language & Environment */
     "target": "esnext",
     "lib": ["esnext", "dom"],
@@ -21,7 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "erasableSyntaxOnly": true,
-
     "paths": {
       "@/*": ["./src/*"]
     },
