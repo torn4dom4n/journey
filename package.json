@@ -9,7 +9,7 @@
     "preview": "vp preview",
     "lint": "vp lint",
     "fmt": "vp fmt",
-    "check": "vp check"
+    "check": "vp check --fix"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",
@@ -23,8 +23,8 @@
     "typescript": "^7.0.2",
     "unocss": "^66.7.4",
     "unplugin-yaml": "^4.2.1",
-    "vite": "catalog:",
-    "vite-plus": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.4",
+    "vite-plus": "0.2.4",
     "vue": "^3.5.39",
     "vue-tsc": "^3.3.7"
   },
