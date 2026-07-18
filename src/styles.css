@@ -8,8 +8,17 @@ body,
   overflow: hidden;
 }
 
-.maplibregl-popup-content {
+/* Default pill style popup */
+.maplibregl-popup:not(.popup-with-image) .maplibregl-popup-content {
   border-radius: 9999px !important;
   padding: 4px 12px !important;
   font-size: 14px !important;
+}
+
+/* Card style popup for places with images */
+.popup-with-image .maplibregl-popup-content {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
