@@ -72,13 +72,23 @@ watchEffect(() => {
   marker.setLngLat(position.value).addTo(mapInstance);
 });
 
+function getImageUrl(src: string): string {
+  if (/^(https?:|data:)/i.test(src)) {
+    return src;
+  }
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const cleanSrc = src.replace(/^\.?\//, "");
+  const separator = baseUrl.endsWith("/") ? "" : "/";
+  return `${baseUrl}${separator}${cleanSrc}`;
+}
+
 watchEffect(() => {
   if (props.place.image) {
     const container = document.createElement("div");
     container.className = "flex flex-col gap-1.5 p-1 max-w-[200px]";
 
     const img = document.createElement("img");
-    img.src = props.place.image;
+    img.src = getImageUrl(props.place.image);
     img.alt = props.place.label;
     img.className = "w-full h-24 object-cover rounded-lg";
     img.loading = "lazy";
