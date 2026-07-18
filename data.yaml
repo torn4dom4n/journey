@@ -6,11 +6,10 @@
 
     - label: Hà Giang
       coords: 22.8168007, 104.9504515
-      image: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=400&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1578676030146-86ef415dec0f?w=400&auto=format&fit=crop"
 
     - label: Lào Cai
       coords: 22.3153883, 103.8399788
-      image: "https://images.unsplash.com/photo-1508873696983-2df519f0397e?w=400&auto=format&fit=crop"
 
     - label: Thái Nguyên
       coords: 21.5774672, 105.7038800
@@ -20,7 +19,7 @@
 
     - label: Quảng Ninh
       coords: 20.9488856, 107.1035074
-      image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=400&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1704765707419-1b83cb404b13?w=400&auto=format&fit=crop"
 
     - label: Bắc Giang
       coords: 21.2816, 106.1989
