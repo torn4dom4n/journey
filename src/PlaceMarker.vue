@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Marker, Popup, type Map } from "maplibre-gl";
-import { computed, inject, onMounted, onUnmounted, watchEffect, type Ref } from "vue";
+import { computed, inject, onUnmounted, watchEffect, type Ref } from "vue";
 
 import type { Place } from "./types";
 
@@ -24,6 +24,54 @@ const position = computed(() => {
   return coords;
 });
 
+const el = document.createElement("div");
+el.className = "h-8 w-8 flex cursor-pointer items-center justify-center";
+el.setAttribute("aria-label", props.place.label);
+el.tabIndex = 0;
+
+const dot = document.createElement("div");
+dot.className =
+  "pointer-events-none h-2.5 w-2.5 border border-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)] transition-shadow duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),0_2px_6px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:brightness-75";
+if (props.place.current) {
+  dot.className +=
+    " w-4 h-4 shadow-[0_3px_12px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25),0_3px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.5)]";
+}
+dot.style.backgroundColor = props.color;
+dot.setAttribute("aria-hidden", "true");
+el.append(dot);
+
+const popup = new Popup({
+  offset: 8,
+  closeButton: false,
+  closeOnMove: false,
+  focusAfterOpen: false,
+  className: props.place.image ? "popup-with-image" : undefined,
+});
+
+const show = () => popup.setLngLat(position.value).addTo(mapInstance);
+const hide = () => popup.remove();
+
+const handleClick = (evt: MouseEvent) => {
+  evt.stopPropagation();
+  show();
+};
+
+const handleKeydown = (evt: KeyboardEvent) => {
+  if (evt.key === "Enter" || evt.key === " ") {
+    evt.stopPropagation();
+    show();
+  }
+};
+
+el.addEventListener("mouseenter", show);
+el.addEventListener("mouseleave", hide);
+el.addEventListener("focus", show);
+el.addEventListener("blur", hide);
+el.addEventListener("click", handleClick);
+el.addEventListener("keydown", handleKeydown);
+
+const marker = new Marker({ element: el, anchor: "center" });
+
 function getImageUrl(src: string): string {
   if (/^(https?:|data:)/i.test(src)) {
     return src;
@@ -34,98 +82,53 @@ function getImageUrl(src: string): string {
   return `${baseUrl}${separator}${cleanSrc}`;
 }
 
-onMounted(() => {
-  const el = document.createElement("div");
-  el.className = "h-8 w-8 flex cursor-pointer items-center justify-center";
+watchEffect(() => {
   el.setAttribute("aria-label", props.place.label);
-  el.tabIndex = 0;
+  dot.style.backgroundColor = props.color;
 
-  const dot = document.createElement("div");
-  dot.setAttribute("aria-hidden", "true");
-  el.append(dot);
+  let baseDotClass =
+    "pointer-events-none h-2.5 w-2.5 border border-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)] transition-shadow duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),0_2px_6px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:brightness-75";
+  if (props.place.current) {
+    baseDotClass +=
+      " w-4 h-4 shadow-[0_3px_12px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25),0_3px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.5)]";
+  }
+  dot.className = baseDotClass;
 
-  const popup = new Popup({
-    offset: 8,
-    closeButton: false,
-    closeOnMove: false,
-    focusAfterOpen: false,
-    className: props.place.image ? "popup-with-image" : undefined,
-  });
+  marker.setLngLat(position.value).addTo(mapInstance);
 
-  const show = () => popup.setLngLat(position.value).addTo(mapInstance);
-  const hide = () => popup.remove();
+  if (props.place.image) {
+    const container = document.createElement("div");
+    container.className = "flex flex-col gap-1.5 p-1 max-w-[200px]";
 
-  const handleClick = (evt: MouseEvent) => {
-    evt.stopPropagation();
-    show();
-  };
+    const img = document.createElement("img");
+    img.src = getImageUrl(props.place.image);
+    img.alt = props.place.label;
+    img.className = "w-full h-24 object-cover rounded-lg";
+    img.loading = "lazy";
 
-  const handleKeydown = (evt: KeyboardEvent) => {
-    if (evt.key === "Enter" || evt.key === " ") {
-      evt.stopPropagation();
-      show();
-    }
-  };
+    const label = document.createElement("div");
+    label.className = "text-xs font-semibold px-1 text-center truncate";
+    label.textContent = props.place.label;
 
-  el.addEventListener("mouseenter", show);
-  el.addEventListener("mouseleave", hide);
-  el.addEventListener("focus", show);
-  el.addEventListener("blur", hide);
-  el.addEventListener("click", handleClick);
-  el.addEventListener("keydown", handleKeydown);
+    container.appendChild(img);
+    container.appendChild(label);
+    popup.setDOMContent(container);
+  } else {
+    popup.setText(props.place.label);
+  }
+});
 
-  const marker = new Marker({ element: el, anchor: "center" });
-
-  const stopWatch = watchEffect(() => {
-    el.setAttribute("aria-label", props.place.label);
-    dot.style.backgroundColor = props.color;
-
-    let baseDotClass =
-      "pointer-events-none h-2.5 w-2.5 border border-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)] transition-shadow duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),0_2px_6px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:brightness-75";
-    if (props.place.current) {
-      baseDotClass +=
-        " w-4 h-4 shadow-[0_3px_12px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25),0_3px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.5)]";
-    }
-    dot.className = baseDotClass;
-
-    marker.setLngLat(position.value).addTo(mapInstance);
-
-    if (props.place.image) {
-      const container = document.createElement("div");
-      container.className = "flex flex-col gap-1.5 p-1 max-w-[200px]";
-
-      const img = document.createElement("img");
-      img.src = getImageUrl(props.place.image);
-      img.alt = props.place.label;
-      img.className = "w-full h-24 object-cover rounded-lg";
-      img.loading = "lazy";
-
-      const label = document.createElement("div");
-      label.className = "text-xs font-semibold px-1 text-center truncate";
-      label.textContent = props.place.label;
-
-      container.appendChild(img);
-      container.appendChild(label);
-      popup.setDOMContent(container);
-    } else {
-      popup.setText(props.place.label);
-    }
-  });
-
-  mapInstance.on("click", hide);
-
-  onUnmounted(() => {
-    stopWatch();
-    el.removeEventListener("mouseenter", show);
-    el.removeEventListener("mouseleave", hide);
-    el.removeEventListener("focus", show);
-    el.removeEventListener("blur", hide);
-    el.removeEventListener("click", handleClick);
-    el.removeEventListener("keydown", handleKeydown);
-    popup.remove();
-    marker.remove();
-    mapInstance.off("click", hide);
-  });
+mapInstance.on("click", hide);
+onUnmounted(() => {
+  el.removeEventListener("mouseenter", show);
+  el.removeEventListener("mouseleave", hide);
+  el.removeEventListener("focus", show);
+  el.removeEventListener("blur", hide);
+  el.removeEventListener("click", handleClick);
+  el.removeEventListener("keydown", handleKeydown);
+  popup.remove();
+  marker.remove();
+  mapInstance.off("click", hide);
 });
 </script>
 
