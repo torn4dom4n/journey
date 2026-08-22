@@ -54,6 +54,9 @@ export default defineConfig({
       typeCheck: true,
     },
   },
+  optimizeDeps: {
+    exclude: ["maplibre-gl"],
+  },
   plugins: [vue(), UnoCSS(), Yaml()],
   resolve: {
     tsconfigPaths: true,
