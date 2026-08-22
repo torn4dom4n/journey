@@ -28,7 +28,6 @@ onMounted(() => {
     style: style,
     center: [105.8, 21.0],
     zoom: 1.5,
-    // @ts-ignore
     projection: { type: props.projection },
     dragRotate: true,
     touchPitch: true,
@@ -37,7 +36,6 @@ onMounted(() => {
 
   instance.on("load", () => {
     loaded.value = true;
-    // @ts-ignore
     instance.setProjection({ type: props.projection });
   });
 
@@ -53,7 +51,6 @@ watch(
   () => props.projection,
   (projection) => {
     if (!loaded.value) return;
-    // @ts-ignore
     map.value?.setProjection({ type: projection });
   },
 );
