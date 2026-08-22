@@ -51,26 +51,26 @@ const popup = new Popup({
 const show = () => popup.setLngLat(position.value).addTo(mapInstance);
 const hide = () => popup.remove();
 
-el.addEventListener("mouseenter", show);
-el.addEventListener("mouseleave", hide);
-el.addEventListener("focus", show);
-el.addEventListener("blur", hide);
-el.addEventListener("click", (evt) => {
+const handleClick = (evt: MouseEvent) => {
   evt.stopPropagation();
   show();
-});
-el.addEventListener("keydown", (evt) => {
+};
+
+const handleKeydown = (evt: KeyboardEvent) => {
   if (evt.key === "Enter" || evt.key === " ") {
     evt.stopPropagation();
     show();
   }
-});
+};
+
+el.addEventListener("mouseenter", show);
+el.addEventListener("mouseleave", hide);
+el.addEventListener("focus", show);
+el.addEventListener("blur", hide);
+el.addEventListener("click", handleClick);
+el.addEventListener("keydown", handleKeydown);
 
 const marker = new Marker({ element: el, anchor: "center" });
-
-watchEffect(() => {
-  marker.setLngLat(position.value).addTo(mapInstance);
-});
 
 function getImageUrl(src: string): string {
   if (/^(https?:|data:)/i.test(src)) {
@@ -83,6 +83,19 @@ function getImageUrl(src: string): string {
 }
 
 watchEffect(() => {
+  el.setAttribute("aria-label", props.place.label);
+  dot.style.backgroundColor = props.color;
+
+  let baseDotClass =
+    "pointer-events-none h-2.5 w-2.5 border border-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)] transition-shadow duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),0_2px_6px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:brightness-75";
+  if (props.place.current) {
+    baseDotClass +=
+      " w-4 h-4 shadow-[0_3px_12px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25),0_3px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.5)]";
+  }
+  dot.className = baseDotClass;
+
+  marker.setLngLat(position.value).addTo(mapInstance);
+
   if (props.place.image) {
     const container = document.createElement("div");
     container.className = "flex flex-col gap-1.5 p-1 max-w-[200px]";
@@ -107,6 +120,13 @@ watchEffect(() => {
 
 mapInstance.on("click", hide);
 onUnmounted(() => {
+  el.removeEventListener("mouseenter", show);
+  el.removeEventListener("mouseleave", hide);
+  el.removeEventListener("focus", show);
+  el.removeEventListener("blur", hide);
+  el.removeEventListener("click", handleClick);
+  el.removeEventListener("keydown", handleKeydown);
+  popup.remove();
   marker.remove();
   mapInstance.off("click", hide);
 });
