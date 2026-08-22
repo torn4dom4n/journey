@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { Map } from "maplibre-gl";
+import { Map, setWorkerUrl } from "maplibre-gl";
+import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import { onMounted, onUnmounted, provide, ref, shallowRef, useTemplateRef, watch } from "vue";
 import "maplibre-gl/dist/maplibre-gl.css";
+
+setWorkerUrl(workerUrl);
 
 const props = defineProps<{
   projection: "globe" | "mercator";
