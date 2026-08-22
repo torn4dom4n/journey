@@ -15,17 +15,17 @@
     "@iconify-json/ph": "^1.2.2",
     "@iconify-json/ri": "^1.2.10",
     "@types/node": "^24.13.3",
-    "@unocss/reset": "^66.7.5",
+    "@unocss/reset": "^66.8.1",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vueuse/core": "^14.4.0",
-    "maplibre-gl": "^6.3.0",
+    "maplibre-gl": "^6.4.1",
     "typescript": "^7.0.2",
-    "unocss": "^66.7.5",
+    "unocss": "^66.8.1",
     "unplugin-yaml": "^4.2.1",
     "vite": "npm:@voidzero-dev/vite-plus-core@^0.2.9",
     "vite-plus": "^0.2.9",
     "vue": "^3.5.41",
-    "vue-tsc": "^3.3.9"
+    "vue-tsc": "^3.3.10"
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.22.0"
 }
