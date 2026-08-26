@@ -5,8 +5,8 @@ Nhat Nguyen's personal journey tracker.
 ## Development
 
 ```bash
-pnpm install
-pnpm dev
+vp install
+vp dev
 ```
 
 ## License
