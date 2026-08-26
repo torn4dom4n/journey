@@ -1,8 +1,8 @@
 {
   "name": "@torn4dom4n/journey",
   "framework": "vite",
-  "buildCommand": "pnpm build",
-  "installCommand": "pnpm install",
+  "buildCommand": "vpr build",
+  "installCommand": "vp install",
   "outputDirectory": "dist",
   "github": {
     "autoJobCancelation": true
