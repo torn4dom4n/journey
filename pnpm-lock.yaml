@@ -21,7 +21,7 @@ importers:
         specifier: ^24.13.3
         version: 24.13.3
       '@unocss/reset':
-        specifier: ^66.9.2
+        specifier: ^66.10.0
         version: 66.10.0
       '@vitejs/plugin-vue':
         specifier: ^6.0.8
@@ -36,7 +36,7 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
       unocss:
-        specifier: ^66.9.2
+        specifier: ^66.10.0
         version: 66.10.0(@devframes/hub@0.9.12(crossws@0.4.12(srvx@1.0.3))(devframe@0.9.12(cac@7.0.0)(srvx@1.0.3)))(@voidzero-dev/vite-plus-core@0.3.0(@types/node@24.13.3)(jiti@2.7.0)(typescript@7.0.2)(yaml@2.8.4))(cac@7.0.0)(crossws@0.4.12(srvx@1.0.3))(srvx@1.0.3)
       unplugin-yaml:
         specifier: ^4.2.1
