@@ -1,11 +1,12 @@
-minimumReleaseAge: 0
-shellEmulator: true
-trustLockfile: true
-trustPolicy: no-downgrade
-trustPolicyIgnoreAfter: 604800
 packages:
   - "."
 allowBuilds:
   esbuild: false
+autoDedupe: true
+minimumReleaseAge: 0
 overrides:
   vite: "npm:@voidzero-dev/vite-plus-core@^0.3.3"
+shellEmulator: true
+trustLockfile: true
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 604800
